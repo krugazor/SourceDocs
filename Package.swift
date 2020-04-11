@@ -24,8 +24,8 @@ let package = Package(
             "Commandant",
             "Curry"
             ]),
-        .testTarget(name: "BehavioralTests", dependencies: ["System"]),
-        .testTarget(name: "UnitTests", dependencies: ["SourceDocs"]),
+        .testTarget(name: "SDBehavioralTests", dependencies: ["System"]),
+        .testTarget(name: "SDUnitTests", dependencies: ["SourceDocs"]),
         .target(name: "SourceDocsDemo", dependencies: []),
     ]
 )
