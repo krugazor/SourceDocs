@@ -9,6 +9,16 @@
 #### Bug Fixes
 - None
 
+## 0.7.0
+
+#### Breaking
+- None
+
+#### Enhancements
+- Made the code available as a library and an executable
+
+#### Bug Fixes
+- None
 
 ## 0.6.1
 
