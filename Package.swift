@@ -4,7 +4,8 @@ import PackageDescription
 let package = Package(
     name: "SourceDocs",
     products: [
-        .executable(name: "sourcedocs", targets: ["SourceDocs"]),
+        .library(name: "sourcedocslib", targets: ["SourceDocs"]),
+        .executable(name: "sourcedocs", targets: ["SourceDocsExe"]),
     ],
     dependencies: [
         .package(url: "https://github.com/jpsim/SourceKitten.git", from: "0.26.0"),
@@ -15,6 +16,7 @@ let package = Package(
         .package(url: "https://github.com/eneko/System.git", from: "0.2.0")
     ],
     targets: [
+        .target(name: "SourceDocsExe", dependencies: ["SourceDocs"]),
         .target(name: "SourceDocs", dependencies: [
             "SourceKittenFramework",
             "MarkdownGenerator",
