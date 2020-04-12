@@ -15,6 +15,28 @@
 - None
 
 #### Enhancements
+- Generates documentation for globals too
+
+#### Bug Fixes
+- None
+
+## 0.7.1
+
+#### Breaking
+- None
+
+#### Enhancements
+- None
+
+#### Bug Fixes
+- Target name conflict
+
+## 0.7.0
+
+#### Breaking
+- None
+
+#### Enhancements
 - Made the code available as a library and an executable
 
 #### Bug Fixes

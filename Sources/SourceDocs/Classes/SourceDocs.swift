@@ -12,7 +12,7 @@ import Curry
 import SourceKittenFramework
 
 public struct SourceDocs {
-    static let version = "0.7.0"
+    static let version = "0.7.2"
     static let defaultOutputPath = "Documentation/Reference"
     static let defaultLinkEnding = ".md"
     static let defaultLinkBeginning = ""
@@ -33,7 +33,7 @@ public struct SourceDocs {
     }
     
     public func runOnSPM(moduleName: String, outputDirectory: String) throws -> Result<(), SourceDocsError>{
-        let options = GenerateCommandOptions(spmModule: moduleName, moduleName: nil, linkBeginningText: SourceDocs.defaultLinkBeginning, linkEndingText: SourceDocs.defaultLinkEnding, inputFolder: FileManager.default.currentDirectoryPath, outputFolder: outputDirectory, minimumAccessLevel: AccessLevel.fileprivate.rawValue, includeModuleNameInPath: true, clean: true, collapsibleBlocks: false, tableOfContents: true, xcodeArguments: [])
+        let options = GenerateCommandOptions(spmModule: moduleName, moduleName: nil, linkBeginningText: SourceDocs.defaultLinkBeginning, linkEndingText: SourceDocs.defaultLinkEnding, inputFolder: FileManager.default.currentDirectoryPath, outputFolder: outputDirectory, minimumAccessLevel: AccessLevel.private.rawValue, includeModuleNameInPath: true, clean: true, collapsibleBlocks: false, tableOfContents: true, xcodeArguments: [])
         
         if !FileManager.default.fileExists(atPath: "./.build/debug.yaml") {
             return .failure(SourceDocsError.internalError(message: "Please build the package first with `swift build`"))

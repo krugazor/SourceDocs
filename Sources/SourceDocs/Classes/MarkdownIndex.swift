@@ -28,6 +28,7 @@ class MarkdownIndex {
     var protocols: [MarkdownProtocol] = []
     var typealiases: [MarkdownTypealias] = []
     var methods: [MarkdownMethod] = []
+    var variables: [MarkdownVariable] = []
 
     func write(to docsPath: String, linkBeginningText: String, linkEndingText: String) throws {
         extensions = flattenedExtensions()
@@ -35,6 +36,9 @@ class MarkdownIndex {
         fputs("Generating Markdown documentation...\n".green, stdout)
         var content: [MarkdownConvertible] = []
 
+        try content.append(writeAndIndexFiles(items: variables, to: docsPath, collectionTitle: "Globals",
+                                              linkBeginningText: linkBeginningText,
+                                              linkEndingText: linkEndingText))
         try content.append(writeAndIndexFiles(items: protocols, to: docsPath, collectionTitle: "Protocols",
                                               linkBeginningText: linkBeginningText,
                                               linkEndingText: linkEndingText))

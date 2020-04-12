@@ -133,7 +133,7 @@ struct GenerateCommand: CommandProtocol {
                                               tableOfContents: options.tableOfContents,
                                               minimumAccessLevel: minimumAccessLevel)
 
-        if let value: String = dictionary.get(.kind), let kind = SwiftDeclarationKind(rawValue: value) {
+         if let value: String = dictionary.get(.kind), let kind = SwiftDeclarationKind(rawValue: value) {
             if kind == .struct, let item = MarkdownObject(dictionary: dictionary, options: markdownOptions) {
                 MarkdownIndex.shared.structs.append(item)
             } else if kind == .class, let item = MarkdownObject(dictionary: dictionary, options: markdownOptions) {
@@ -149,7 +149,9 @@ struct GenerateCommand: CommandProtocol {
             } else if kind == .functionFree,
                 let item = MarkdownMethod(dictionary: dictionary, options: markdownOptions) {
                 MarkdownIndex.shared.methods.append(item)
-            }
+            } else if kind == .varGlobal, let item = MarkdownVariable(dictionary: dictionary, options: markdownOptions) {
+                MarkdownIndex.shared.variables.append(item)
+            } 
         }
 
         if let substructure = dictionary[SwiftDocKey.substructure.rawValue] as? [SwiftDocDictionary] {
